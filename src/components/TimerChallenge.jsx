@@ -10,7 +10,7 @@ export default function TimerChallenge({ title, targetTime }) {
 
   const timeActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
-  if (timeRemaining < 0) {
+  if (timeRemaining <= 0) {
     clearInterval(timer.current);
     dialog.current.open();
   }
@@ -42,7 +42,7 @@ export default function TimerChallenge({ title, targetTime }) {
       <section className="challenge">
         <h2>{title}</h2>
         <p className="challenge-time">
-          {parseInt(timeRemaining / 1000)} second
+          {Math.round(timeRemaining / 1000)} second
           {timeRemaining / 1000 > 1 ? "s" : ""}
         </p>
         <p>
